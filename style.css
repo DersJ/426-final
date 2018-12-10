@@ -1,0 +1,47 @@
+
+#flightboard {
+	display: block;
+}
+
+#admin {
+	display: none;
+}
+
+body {
+	background-color: #3f3f3f;
+	color: #f9f9f9;
+	font-family: "Open Sans";
+}
+
+#flightboard table {
+	width: 50%;
+	border-collapse: collapse;
+}
+
+#flightboard th {
+	color: #fff200;
+	text-align: left;
+	height: 50px;
+	font-size: 20pt;
+	border-bottom: 3px solid grey;
+
+
+
+}
+
+#flightboard td {
+	border: 1px solid grey;
+	padding: 5px;
+}
+
+.flight {
+	height: 30px;
+}
+
+.ontime {
+	color: #009302;
+}
+
+.delayed {
+	color: #ffd507;
+}

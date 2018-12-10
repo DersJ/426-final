@@ -1,0 +1,65 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Flightboard</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Open+Sans" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+
+<div id="flightboard">
+	<h1>flightboard</h1>
+	<h2>Raleigh-Durham International Airport</h2>
+	<table>
+		<thead>
+			<tr>
+				<th>Flight</th>
+				<th>Origin</th>
+				<th>Arrives At</th>
+				<th>Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="flight">
+				<td class="name">AA 1284</td>
+				<td class="source">Washington-Dulles</td>
+				<td class="eta">12:32pm</td>
+				<td class="status ontime">On Time</td>
+			</tr>
+			<tr class="flight">
+				<td class="name">DL 532</td>
+				<td class="source">Denver</td>
+				<td class="eta">4:00pm</td>
+				<td class="status ontime">On Time</td>
+			</tr>
+			<tr class="flight">
+				<td class="name">UTD 1630</td>
+				<td class="source">San Fransisco</td>
+				<td class="eta">3:00pm</td>
+				<td class="status delayed">DELAYED - now 4:15pm</td>
+			</tr>
+		</tbody>
+	</table>
+
+</div>
+
+<div id="admin">
+	<h1>admin</h1>
+</div>
+
+
+</body>
+</html>
