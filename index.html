@@ -2,64 +2,124 @@
 
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+	<meta charset="utf-8">
 
-  <title>Flightboard</title>
+	<title>Flightboard</title>
 
-  <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Libre+Baskerville|Open+Sans" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 
-  <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">
 
-  <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-  <script src="script.js"></script>
+	<script
+	src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+
 </head>
 
 <body>
+	<div class="row">
+		<div class="col-sm-2"></div>
+		<div class="col-sm-8" id="flightboard">
+			<div class="dropdown p-4 m-5 shadow text-center">
+				<span class="airport">Raleigh-Durham International Airport <button class="btn btn-secondary dropbtn" type="button" onclick="myFunction()"><i class="fas fa-search"></i></button> </span>
+				<p id="weather">weather</p>
+				<div id="searchDropdown" class="dropdown-content rounded">
+					<input type="text" placeholder="Search.." id="searchInput" onkeyup="filterFunction()">
+					<a href="#about">About</a>
+					<a href="#base">Base</a>
+					<a href="#blog">Blog</a>
+					<a href="#contact">Contact</a>
+					<a href="#custom">Custom</a>
+					<a href="#support">Support</a>
+					<a href="#tools">Tools</a>
 
-<div id="flightboard">
-	<h1>flightboard</h1>
-	<h2>Raleigh-Durham International Airport</h2>
-	<table>
-		<thead>
-			<tr>
-				<th>Flight</th>
-				<th>Origin</th>
-				<th>Arrives At</th>
-				<th>Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="flight">
-				<td class="name">AA 1284</td>
-				<td class="source">Washington-Dulles</td>
-				<td class="eta">12:32pm</td>
-				<td class="status ontime">On Time</td>
-			</tr>
-			<tr class="flight">
-				<td class="name">DL 532</td>
-				<td class="source">Denver</td>
-				<td class="eta">4:00pm</td>
-				<td class="status ontime">On Time</td>
-			</tr>
-			<tr class="flight">
-				<td class="name">UTD 1630</td>
-				<td class="source">San Fransisco</td>
-				<td class="eta">3:00pm</td>
-				<td class="status delayed">DELAYED - now 4:15pm</td>
-			</tr>
-		</tbody>
-	</table>
+				</div>
 
-</div>
+			</div>
+			<div class="tab">
+				<button class="tablinks active shadow" onclick="switchTab(event, 'Arrivals')">Arrivals</button>
+				<button class="tablinks shadow" onclick="switchTab(event, 'Departures')">Departures</button>
+			</div>
+			<div id="Arrivals" class="tabcontent shadow">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Flight</th>
+							<th>Origin</th>
+							<th>Arrives At</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="flight">
+							<td class="name">American 1284 <p class="planetype hide">Boeing 737</p></td>
+							<td class="source">Washington-Dulles <p class="source_weather hide">70deg, sunny</p></td>
+							<td class="time">12:32pm <p class="departed_at hide">departed at 11:00am from sanfransico</p></td>
+							<td class="status ontime">On Time</td>
+						</tr>
+						<tr class="flight">
+							<td class="name">DL 532</td>
+							<td class="source">Denver</td>
+							<td class="time">4:00pm</td>
+							<td class="status ontime">On Time</td>
+						</tr>
+						<tr class="flight">
+							<td class="name">UTD 1630</td>
+							<td class="source">San Fransisco</td>
+							<td class="time">3:00pm</td>
+							<td class="status delayed">DELAYED - now 4:15pm</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="Departures" class="tabcontent shadow">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Flight</th>
+							<th>Destination</th>
+							<th>Departs At</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="flight">
+							<td class="name">SW 912</td>
+							<td class="destination">Washington-Dulles</td>
+							<td class="time">12:32pm</td>
+							<td class="status ontime">On Time</td>
 
-<div id="admin">
-	<h1>admin</h1>
-</div>
+						</tr>
+						<tr class="flight">
+							<td class="name">DL 532</td>
+							<td class="destination">Denver</td>
+							<td class="time">4:00pm</td>
+							<td class="status ontime">On Time</td>
+						</tr>
+						<tr class="flight">
+							<td class="name">UTD 12</td>
+							<td class="destination">Atlanta</td>
+							<td class="time">11:00am</td>
+							<td class="status delayed">DELAYED - now 12:45pm</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+		</div>
+		<div class="col-sm-2"></div></div>
+		<div id="admin">
+			<h1>admin</h1>
+		</div>
 
 
-</body>
-</html>
+	</body>
+	</html>

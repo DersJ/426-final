@@ -1,12 +1,10 @@
-
 #flightboard {
 	display: block;
+	width: 60%;
 }
-
 #admin {
-	display: none;
+	display: block;
 }
-
 body {
 	background-color: #3f3f3f;
 	color: #f9f9f9;
@@ -14,28 +12,20 @@ body {
 }
 
 #flightboard table {
-	width: 50%;
-	border-collapse: collapse;
+	width: 100%;
 }
 
 #flightboard th {
 	color: #fff200;
 	text-align: left;
 	height: 50px;
-	font-size: 20pt;
-	border-bottom: 3px solid grey;
-
-
-
+	font-size: 16pt;
+	
 }
 
-#flightboard td {
-	border: 1px solid grey;
-	padding: 5px;
-}
 
-.flight {
-	height: 30px;
+.selected {
+	height: 80px;
 }
 
 .ontime {
@@ -44,4 +34,123 @@ body {
 
 .delayed {
 	color: #ffd507;
+}
+
+.tab {
+  	overflow: hidden;
+	background-color: #3f3f3f;
+	color: #f9f9f9;
+}
+
+#Arrivals {
+	display: block;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 30px;
+  color: #f9f9f9;
+  width: 50%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #262626
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  background-color: #262626;
+
+
+}
+
+.name {
+	width: 20%;
+}
+.source, .destination {
+	width: 30%;
+}
+.time {
+	width: 20%;
+}
+.status {
+	width: 30%;
+}
+
+
+.airport {
+	font-size: 30pt;
+	
+	color: #f9f9f9;
+}
+.dropdown {
+	background-color: #262626;
+}
+
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #fff200;
+}
+
+#searchInput {
+  border-box: box-sizing;
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+
+#searchInput:focus {outline: 3px solid #ddd;}
+
+
+
+.dropdown-content {
+	font-size: 12pt;
+	display: none;
+	background-color: #f6f6f6;
+	width: 100%;
+	max-height: 300px;
+	text-align: left;
+	overflow: scroll;
+	border: 1px solid #ddd;
+	z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+	background-color: #ddd;
+}
+
+.show {display: block;}
+
+.hide {display: none;}
+
+.planetype, .source_weather, .departed_at {
+	font-size: 10pt;
+	color: #ccc;
+	margin-top: 8px;
 }
