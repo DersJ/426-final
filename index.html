@@ -3,6 +3,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width , initial-scale=1" />
 
 	<title>Flightboard</title>
 
@@ -25,101 +26,214 @@
 </head>
 
 <body>
-	<div class="row">
-		<div class="col-sm-2"></div>
-		<div class="col-sm-8" id="flightboard">
-			<div class="dropdown p-4 m-5 shadow text-center">
-				<span class="airport">Raleigh-Durham International Airport <button class="btn btn-secondary dropbtn" type="button" onclick="myFunction()"><i class="fas fa-search"></i></button> </span>
-				<p id="weather">weather</p>
-				<div id="searchDropdown" class="dropdown-content rounded">
-					<input type="text" placeholder="Search.." id="searchInput" onkeyup="filterFunction()">
-					<a href="#about">About</a>
-					<a href="#base">Base</a>
-					<a href="#blog">Blog</a>
-					<a href="#contact">Contact</a>
-					<a href="#custom">Custom</a>
-					<a href="#support">Support</a>
-					<a href="#tools">Tools</a>
+	<header>
+		<nav class="navbar navbar-expand-lg navbar-dark">
+			<a class="navbar-brand" id="title" href="#">Flightboard</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active">
+						<a class="nav-link airport" id="navairport" onclick="console.log('click')" >Raleigh-Durham International Airport</a>
+					</li>
+					<li class="nav-item" id="toAdmin">
+						<a class="nav-link" onclick="toAdmin()" href="#">Admin Tools</a>
+					</li>
+					<li class="nav-item hide" id="toFB">
+						<a class="nav-link" onclick="toFB()" href="#">Back to Flightboard</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle rounded" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Search Airports
+						</a>
+						<div class="dropdown-menu" id="searchDropdown" aria-labelledby="navbarDropdown">
+							<input class="form-control mr-sm-2" id="searchInput" onkeyup="filterFunction()" type="text" placeholder="Search Airports" aria-label="Search">
+
+							<p id="zeroResults" class="hide">No results found.</p>
+
+						</div>
+					</li>
+				</ul>
+				<!-- <form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" id="searchInput" onkeyup="filterFunction()" type="text" placeholder="Search Airports" aria-label="Search" onfocusin="myFunction()">
+					<div id="searchDropdown" class="dropdown-content rounded">
+						<p id="zeroResults" class="hide">No results found.</p>
+					</div>
+				</form> -->
+			</div>
+		</nav>
+	</header>
+	<div class="main">
+		<div class="row">
+			<div class="col-sm-1"></div>
+			<div class="col-sm-10">
+				<div id="flightboard" class="">
+					<div class="airportdiv m-4 p-4 rounded shadow text-center"><span class="airport" id="airport_title"></span></div>
+					<div class="tab">
+						<button class="tablinks active shadow" id="arrivals_button" onclick="switchTab(event, 'Arrivals')">Arrivals</button>
+						<button class="tablinks shadow" id="departures_button" onclick="switchTab(event, 'Departures')">Departures</button>
+					</div>
+					<div id="Arrivals" class="tabcontent shadow">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Flight</th>
+									<th>Origin</th>
+									<th>Arrives At</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="arrivals_body">
+
+							</tbody>
+						</table>
+					</div>
+					<div id="Departures" class="tabcontent shadow">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Flight</th>
+									<th>Destination</th>
+									<th>Departs At</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="departures_body">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div id="detail" class="hide">
+					<div class="jumbotron">
+						<h1 class="display-4" id="detail_flight_number">United Airlines 2149</h1>
+						<p class="lead" id="detail_desc">Departed Atlanta Hartsfield-Jackson at 3:00pm en route to Charlotte</p>
+						<div class="progress">
+							<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+						</div>
+
+					</div>
+					<h2>Flight Details</h2>
+					<p id="detail_timing">Left Atlanta on time.</p>
+
+					<h2 class="mt-5">Plane Details</h2>
+					<p id="detail_plane"><span id="detail_plane_type">Boeing 737</span> operated by <span id="detail_plane_op"></span></p>
+
+					<button class="btn btn-danger mt-3" type="button" onclick="toFB()">Back</button>
+				</div>
+
+				<div id="plane" class="hide">
+					<div class="jumbotron">
+						<h1 class="display-4" id="planetype"></h1>
+
+				
+						
+
+					</div>
+					<button class="btn btn-danger mb-3" type="button" onclick="toFB()">Back</button>
+					<div class="tab">
+						<button class="tablinks active shadow" onclick="switchTab(event, 'upcoming')">Upcoming Flights</button>
+						<button class="tablinks shadow" onclick="switchTab(event, 'completed')">Completed Flights</button>
+					</div>
+					<div id="upcoming" class="tabcontent shadow">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Flight</th>
+									<th>Origin</th>
+									<th>Destination</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="upcoming_body">
+							</tbody>
+						</table>
+					</div>
+					<div id="completed" class="tabcontent shadow">
+						<table class="table">
+							<thead>
+								<tr>
+									<th>Flight</th>
+									<th>Origin</th>
+									<th>Destination</th>
+									<th>Status</th>
+								</tr>
+							</thead>
+							<tbody id="completed_body">
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+
+				<div id="admin" class="hide">
+					<h1>Admin Tools</h1>
+					<div id='msgs'></div>
+					<div id='security'>
+						<input type="text" placeholder="password"  onkeyup="keyup()" class="form-control mb-4" id="pw">
+						<button type="button" class="btn btn-primary" onclick="authenticate()">Go</button>
+					</div>
+					<div id="add_flight" class="hide">
+						<h4>Add a flight <button class="btn btn-secondary" onclick="$('#addflightform').removeClass('hide')">Show</button> <button class="btn btn-secondary" onclick="$('#addflightform').addClass('hide')">Hide</button></h4>
+						<form class="adminform hide" id="addflightform">
+							<div class="form-group">
+								<label>Departure time: </label>
+								<input class="form-control" id="new_flight_departure" type="text"></div>
+								<div class="form-group">Arrival time: <input class="form-control" id="new_flight_arrival" type="text"></div>
+								<div class="form-group">Flight number: <input class="form-control" id="new_flight_number" type="text"></div>
+								<div class="form-group">Plane id: <input class="form-control" id="new_flight_plane" type="text"></div>
+								<div class="form-group">Departure airport id: <input class="form-control" id="new_flight_departure_id" type="text"></div>
+								<div class="form-group">Arrival airport id: <input class="form-control" id="new_flight_arrival_id" type="text"></div>
+								<div class="form-group">Next flight id: <input class="form-control" id="new_flight_next_id" type="text"></div>
+								<div class="form-group">Airline: <input class="form-control" id="new_flight_airline" type="text"></div>
+
+								<button type="button" class="btn btn-primary" id="make_flight">Create</button></form>
+							</div>
+							<div id="add_instance" class="hide">
+								<h4>Add an Instance <button class="btn btn-secondary" onclick="$('#addinstanceform').removeClass('hide')">Show</button> <button class="btn btn-secondary" onclick="$('#addinstanceform').addClass('hide')">Hide</button></h4>
+								<form class="adminform hide" id="addinstanceform">
+								<div class="form-group">Flight id: <input class="form-control" id='flight_id' type='text'></div>
+								<div class="form-group">Date: <input class="form-control" id='date' type='text'></div>
+								<div class="form-group">Enter true or false: <input class="form-control"id='bool_value' type='text'></div>
+								<button type="button" class="btn btn-primary"  id='createinstance'>Create Instance</button>
+								</form>
+							</div>
+							<div id="edit_instance" class="hide">
+								<h4>Edit an Instance <button class="btn btn-secondary" onclick="$('#editinstanceform').removeClass('hide')">Show</button> <button class="btn btn-secondary" onclick="$('#editinstanceform').addClass('hide')">Hide</button></h4>
+								<form class="adminform hide" id="editinstanceform">
+								<div class="form-group">Flight id: <input class="form-control" id='flight_id' type='text'></div>
+								<div class="form-group">Date: <input class="form-control" id='date' type='text'></div>
+								<div class="form-group">Enter true or false: <input class="form-control"id='bool_value' type='text'></div>
+								<button type="button" class="btn btn-primary"  id='toggel'>Toggle cancelled</button></div>
+								</form>
+							</div>
+							<div id="add_airline" class="hide">
+								<h4>Add an Airline <button class="btn btn-secondary" onclick="$('#addairlineform').removeClass('hide')">Show</button> <button class="btn btn-secondary" onclick="$('#addairlineform').addClass('hide')">Hide</button></h4>
+								<form class="adminform hide" id="addairlineform">
+								<div class="form-group">Airline: <input class="form-control" id='new_airline_name' type='text'></div>
+								<div class="form-group">Logo URL: <input class="form-control" id='new_airline_logo' type='text'></div>
+								<button type="button" id='make_airline' class="btn btn-primary">Create</button>
+								</form>
+							</div>
+							<div id="edit_airline" class="hide">
+								<h4>Edit an Airline <button class="btn btn-secondary" onclick="$('#editairlineform').removeClass('hide')">Show</button> <button class="btn btn-secondary" onclick="$('#editairlineform').addClass('hide')">Hide</button></h4>
+								<form class="adminform hide" id="editairlineform">
+								<div class="form-group">Airline: <input class="form-control" id='edited_airline_name' type='text'></div>
+								<div class="form-group">Logo URL: <input class="form-control" id='edited_airline_logo' type='text'></div>
+								<button type="button" id='edit_airline' class="btn btn-primary">Update</button>
+								</form>
+							</div>
+
+
+						</div>
+
+					</div>
+					<div class="col-sm-1"></div></div>
 
 				</div>
 
-			</div>
-			<div class="tab">
-				<button class="tablinks active shadow" onclick="switchTab(event, 'Arrivals')">Arrivals</button>
-				<button class="tablinks shadow" onclick="switchTab(event, 'Departures')">Departures</button>
-			</div>
-			<div id="Arrivals" class="tabcontent shadow">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Flight</th>
-							<th>Origin</th>
-							<th>Arrives At</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="flight">
-							<td class="name">American 1284 <p class="planetype hide">Boeing 737</p></td>
-							<td class="source">Washington-Dulles <p class="source_weather hide">70deg, sunny</p></td>
-							<td class="time">12:32pm <p class="departed_at hide">departed at 11:00am from sanfransico</p></td>
-							<td class="status ontime">On Time</td>
-						</tr>
-						<tr class="flight">
-							<td class="name">DL 532</td>
-							<td class="source">Denver</td>
-							<td class="time">4:00pm</td>
-							<td class="status ontime">On Time</td>
-						</tr>
-						<tr class="flight">
-							<td class="name">UTD 1630</td>
-							<td class="source">San Fransisco</td>
-							<td class="time">3:00pm</td>
-							<td class="status delayed">DELAYED - now 4:15pm</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-			<div id="Departures" class="tabcontent shadow">
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Flight</th>
-							<th>Destination</th>
-							<th>Departs At</th>
-							<th>Status</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr class="flight">
-							<td class="name">SW 912</td>
-							<td class="destination">Washington-Dulles</td>
-							<td class="time">12:32pm</td>
-							<td class="status ontime">On Time</td>
 
-						</tr>
-						<tr class="flight">
-							<td class="name">DL 532</td>
-							<td class="destination">Denver</td>
-							<td class="time">4:00pm</td>
-							<td class="status ontime">On Time</td>
-						</tr>
-						<tr class="flight">
-							<td class="name">UTD 12</td>
-							<td class="destination">Atlanta</td>
-							<td class="time">11:00am</td>
-							<td class="status delayed">DELAYED - now 12:45pm</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-
-		</div>
-		<div class="col-sm-2"></div></div>
-		<div id="admin">
-			<h1>admin</h1>
-		</div>
-
-
-	</body>
-	</html>
+			</body>
+			</html>

@@ -1,10 +1,16 @@
-#flightboard {
-	display: block;
-	width: 60%;
+.jumbotron {
+	background-color: #262626;
 }
-#admin {
-	display: block;
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0; 
 }
+
 body {
 	background-color: #3f3f3f;
 	color: #f9f9f9;
@@ -22,7 +28,13 @@ body {
 	font-size: 16pt;
 	
 }
-
+th {
+	color: #fff200;
+	text-align: left;
+	height: 50px;
+	font-size: 16pt;
+	
+}
 
 .selected {
 	height: 80px;
@@ -42,7 +54,7 @@ body {
 	color: #f9f9f9;
 }
 
-#Arrivals {
+#Arrivals, #upcoming {
 	display: block;
 }
 
@@ -91,47 +103,39 @@ body {
 .status {
 	width: 30%;
 }
-
-
-.airport {
+#airport_title {
 	font-size: 30pt;
-	
+}
+
+.airportdiv {
+	background-color: #262626;
 	color: #f9f9f9;
 }
-.dropdown {
-	background-color: #262626;
+
+#pw {
+	width: 50%;
 }
 
 
-.dropbtn:hover, .dropbtn:focus {
-  background-color: #fff200;
-}
-
-#searchInput {
-  border-box: box-sizing;
-  background-position: 14px 12px;
-  background-repeat: no-repeat;
-  font-size: 16px;
-  padding: 14px 20px 12px 45px;
-  border: none;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-}
 
 #searchInput:focus {outline: 3px solid #ddd;}
 
 
-
+.adminform{
+	width: 50%;
+}
 .dropdown-content {
 	font-size: 12pt;
-	display: none;
 	background-color: #f6f6f6;
-	width: 100%;
+	width: 250px;
 	max-height: 300px;
 	text-align: left;
 	overflow: scroll;
 	border: 1px solid #ddd;
 	z-index: 1;
+	position: absolute;
+	top: 55px;	
+	right: 0;
 }
 
 .dropdown-content a {
@@ -144,13 +148,29 @@ body {
 .dropdown a:hover {
 	background-color: #ddd;
 }
+.canceled {
+	color: red;
+}
 
 .show {display: block;}
 
 .hide {display: none;}
 
-.planetype, .source_weather, .departed_at {
+.planetype, .weather, .departed_at {
 	font-size: 10pt;
 	color: #ccc;
 	margin-top: 8px;
+}
+.planetype {
+	cursor:pointer;
+}
+
+.navbar {
+	background-color: #262626;
+}
+.main {
+	margin-top: 30px;
+}
+#zeroResults {
+	color: black;
 }
