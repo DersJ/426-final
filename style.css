@@ -165,6 +165,10 @@ th {
 	cursor:pointer;
 }
 
+.clickable {
+	cursor:pointer;
+}
+
 .navbar {
 	background-color: #262626;
 }

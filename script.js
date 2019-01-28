@@ -13,7 +13,7 @@ $(document).ready(function() {
     //airport_id = "190085";
     var date = new Date()
     today = date.getFullYear()+'-'+(date.getMonth()+1).toString()+'-'+date.getDate()
-
+    today = "2018-12-12"
     console.log(today);
 
     var airports_list = [];
@@ -161,7 +161,9 @@ function toPlane(plane_id) {
     $("#plane").removeClass("hide");
     $("#detail").addClass("hide");
     $("#admin").addClass("hide");
-    $("#title").text("Flightboard"); 
+    $("#title").text("Flightboard");
+    document.getElementById("upcoming").style.display = "block";
+    document.getElementById("completed").style.display = "none"; 
 
     populate_plane_info(plane_id);
 }
@@ -179,7 +181,7 @@ function get_airport_flights(cur_airport) {
 
                 var flight = $('<tr class="flight" id="'+ flights[i].id.toString() +'"></tr>');
                 flight.append('<td class="name"><span class="'+flights[i].airline_id.toString()+'"></span> '+flights[i].number.toString() +'<p class="planetype hide '+ flights[i].plane_id.toString()+'" onclick="toPlane('+ flights[i].plane_id.toString()+')"></p></td>');
-                flight.append($('<td class="source"><span class="'+flights[i].departure_id.toString()+'"></span><p class="weather hide" id="weather'+flights[i].departure_id.toString()+'"></p></td>'));
+                flight.append($('<td class="source"><span onclick="selectAirport('+flights[i].departure_id+')" class="clickable '+flights[i].departure_id.toString()+'"></span><p class="weather hide" id="weather'+flights[i].departure_id.toString()+'"></p></td>'));
 
 
                     //getWeather("weather"+flights[i].departure_id.toString(), )
@@ -252,7 +254,7 @@ function get_airport_flights(cur_airport) {
                 var flight = $('<tr class="flight" id="'+ flights[i].id.toString() +'"></tr>');
             flight.append('<td class="name"><span class="'+flights[i].airline_id.toString()+'"></span> '+flights[i].number.toString() +'<p class="planetype hide '+ flights[i].plane_id.toString()+'" onclick="toPlane('+ flights[i].plane_id.toString()+')"></p></td>');
 
-                flight.append($('<td class="source"><span class="'+flights[i].arrival_id.toString()+'"></span><p class="weather hide" id="weather'+flights[i].arrival_id.toString()+'"></p></td>'));
+                flight.append($('<td class="source"><span onclick="selectAirport('+flights[i].arrival_id+')" class="clickable '+flights[i].arrival_id.toString()+'"></span><p class="weather hide" id="weather'+flights[i].arrival_id.toString()+'"></p></td>'));
 
 
                     //getWeather("weather"+flights[i].departure_id.toString(), )
