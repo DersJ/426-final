@@ -8,6 +8,7 @@ Airports
 - flights
 - long and lat
 - airport code
+- city
 
 
 Flights
